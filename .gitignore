@@ -2,3 +2,4 @@ docker/FirstProject/terraform.dockerfile
 docker/FirstProject/.terraform/plugins/linux_amd64
 docker/FirstProject/docker-compose-new.yml
 docker/FirstProject/docker-compose.yml
+ 
