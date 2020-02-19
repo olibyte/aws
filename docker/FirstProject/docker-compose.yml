@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: ./jenkins.Dockerfile
+    volumes:
+    - $PWD/jenkins_home:/var/jenkins_home
+    - $PWD:/app
+    ports:
+      - 8080:8080
+  terraform:
+    build:
+      dockerfile: terraform.Dockerfile
+      context: .
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_REGION: "${AWS_REGION}"
+    volumes:
+      - $PWD:/app
+    working_dir: /app
+  selenium:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - 4444:4444
+      - 5900:5900
+  website:
+   build:
+    context: .
+   ports:
+    - 80:80
+  unit-tests:
+    build:
+      dockerfile: rspec.dockerfile
+      context: .
+    environment:
+      SELENIUM_HOST: selenium
+      SELENIUM_PORT: 4444
+    volumes:
+      - $PWD:/app
+    entrypoint: rspec
+    command:
+      - --pattern
+      - /app/spec/unit/*_spec.rb

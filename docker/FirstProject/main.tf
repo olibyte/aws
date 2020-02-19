@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "bucket_policy" {
    says can be accessed from the .json property. */
 
 resource "aws_s3_bucket" "website" {
-  bucket = "oliver-explorecalifornia.org"  // The name of the bucket.
+  bucket = "explorecalifornia.org"  // The name of the bucket.
   acl    = "public-read"            /* Access control list for the bucket.
                                        Websites need to be publicly-available
                                        to the Internet for website hosting to

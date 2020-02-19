@@ -1,6 +1,6 @@
 FROM ruby:alpine
-LABEL Oliver Bennett <oliver.bennett@unimelb.edu.au>
+MAINTAINER Carlos Nunez <dev@carlosnunez.me>
 
-RUN apk add build-base ruby-nokogiri
+RUN apk add --no-cache build-base ruby-nokogiri
 RUN gem install rspec capybara selenium-webdriver
 ENTRYPOINT [ "rspec" ]

@@ -1,5 +1,5 @@
 FROM nginx:alpine
-LABEL Oliver Bennett <oliver.bennett@unimelb.edu.au>
+MAINTAINER Carlos Nunez <dev@carlosnunez.me>
 
 COPY website /website
 COPY nginx.conf /etc/nginx/nginx.conf

@@ -1,10 +1,7 @@
 FROM alpine
-LABEL Oliver Bennett <oliver.bennett@unimelb.edu.au>
-
-RUN wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip
-RUN unzip /tmp/terraform.zip -d /
-RUN apk add ca-certificates
-
-ENTRYPOINT [ "/terraform" ]
-
+MAINTAINER Carlos Nunez <dev@carlosnunez.me>
+RUN wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.12.9/terraform_0.12.9_linux_amd64.zip && \
+    unzip /tmp/terraform.zip -d /
+RUN apk add --no-cache ca-certificates curl
 USER nobody
+ENTRYPOINT [ "/terraform" ]
