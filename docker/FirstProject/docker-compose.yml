@@ -1,9 +1,27 @@
 version: '3.7'
 services:
+  aws:
+    image: organs/cli
+    environment:
+      AWS_ACCESS_KEY_ID: AKIAZHJWXG4QOGF24QPC
+      AWS_SECRET_ACCESS_KEY: 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
+      AWS_REGION: us-west-2
+      AWS_DEFAULT_REGION: us-west-2
+    volumes:
+      - "$PWD:/app"
+    working_dir: /app
   terraform:
     build:
-      context: .
       dockerfile: terraform.dockerfile
+      context: .
+    environment:
+      AWS_ACCESS_KEY_ID: AKIAZHJWXG4QOGF24QPC
+      AWS_SECRET_ACCESS_KEY: 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
+      AWS_REGION: us-west-2
+      AWS_DEFAULT_REGION: us-west-2
+    volumes:
+      - "$PWD:/app"
+    working_dir: /app    
   selenium:
     image: selenium/standalone-chrome-debug
     ports:
