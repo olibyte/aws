@@ -11,7 +11,7 @@ services:
       - "$PWD:/app"
     working_dir: /app
   terraform:
-    build:
+    build: 
       dockerfile: terraform.dockerfile
       context: .
     environment:

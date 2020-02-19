@@ -1,6 +1,6 @@
 version: '2.2'
 services:
-  aws:
+  aws: 
     image: anigeo/awscli
     volumes:
       - $PWD:/app
