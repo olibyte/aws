@@ -1,0 +1,22 @@
+image: docker:stable
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+build:
+  stage: build
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY/leningrad/docker-sample:latest .
+    - docker push $CI_REGISTRY/leningrad/docker-sample:latest
+
+deploy:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install awscli
+    - aws ecs update-service --cluster fargate-cluster --service fargate-docker-service --force-new-deployment --region us-east-2

@@ -1,0 +1,11 @@
+sudo vim /etc/ssh/sshd_config
+
+// use the arrow keys to move around
+// use x to delete the # in front of Port 22
+// use arrow keys to move to the front of 22
+// type cw (change word)
+// type 24922
+// esc, then :wq and hit enter
+
+sudo reboot
+
