@@ -4,7 +4,7 @@
   "description": "Readme!!",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.22.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.1"
   },
